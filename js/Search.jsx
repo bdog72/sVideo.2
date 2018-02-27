@@ -1,6 +1,9 @@
+// @flow
+
 import React, { Component } from 'react';
 
 import ShowCard from './ShowCard';
+import Header from './Header';
 // import preload from '../data.json';
 
 type Show = {
@@ -13,6 +16,10 @@ type Show = {
 };
 
 class Search extends Component {
+    // defaultProps = {
+    //     shows: []
+    // };
+
     state = {
         searchTerm: ''
     };
@@ -36,15 +43,11 @@ class Search extends Component {
     render() {
         return (
             <div className="search">
-                <header>
-                    <h1>sVideo</h1>
-                    <input
-                        onChange={this.handleSearchTermChange}
-                        value={this.state.searchTerm}
-                        type="text"
-                        placeholder="Search"
-                    />
-                </header>
+                <Header
+                    searchTerm={this.state.searchTerm}
+                    showSearch
+                    handleSearchTermChange={this.handleSearchTermChange}
+                />
                 <div>
                     {this.props.shows
                         .filter(
