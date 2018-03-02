@@ -1,18 +1,20 @@
 // @flow
 
-import React, { Component } from 'react';
-import axios from 'axios';
-import Header from './Header';
-import Spinner from './Spinner';
+import React, { Component } from "react";
+import axios from "axios";
+import Header from "./Header";
+import Spinner from "./Spinner";
 
 class Details extends Component {
   state = {
-    apiData: { rating: '' }
+    apiData: { rating: "" }
   };
   componentDidMount() {
-    axios.get(`http://localhost:3000/${this.props.show.imdbID}`).then((response: { data: { rating: string } }) => {
-      this.setState({ apiData: response.data });
-    });
+    axios
+      .get(`http://localhost:3000/${this.props.show.imdbID}`)
+      .then((response: { data: { rating: string } }) => {
+        this.setState({ apiData: response.data });
+      });
   }
   props: {
     show: Show
@@ -32,7 +34,10 @@ class Details extends Component {
           <h1>{title}</h1>
           <h2>({year})</h2>
           {ratingComponent}
-          <img src={`/public/img/posters/${poster}`} alt={`Poster for ${title}`} />
+          <img
+            src={`/public/img/posters/${poster}`}
+            alt={`Poster for ${title}`}
+          />
           <p>{description}</p>
         </section>
         <div>
